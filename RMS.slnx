@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="RMS.App/RMS.App.csproj" Id="ab79ed72-7411-46f3-a9bd-b35cac25a3df" />
+  <Project Path="RMS.Domain/RMS.Domain.csproj" Id="2e669172-c503-45c2-b0d7-4ca1c5dd3de0" />
+  <Project Path="RMS.Infrastructure/RMS.Infrastructure.csproj" Id="d3d843cc-7f2b-4423-a84d-cc9d298fb183" />
+</Solution>
