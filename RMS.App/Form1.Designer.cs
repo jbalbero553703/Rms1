@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             btnDisplay = new Button();
             dataGridView1 = new DataGridView();
             groupBox1 = new GroupBox();
+            txtModels = new TextBox();
             btnSave = new Button();
             comboCondition = new ComboBox();
             comboLoanStatus = new ComboBox();
@@ -41,10 +43,16 @@
             label2 = new Label();
             txtSerialNum = new TextBox();
             label1 = new Label();
+            initialSetupBindingSource = new BindingSource(components);
+            appDbContextBindingSource = new BindingSource(components);
             btnDelete = new Button();
-            txtModels = new TextBox();
+            appDbContextBindingSource1 = new BindingSource(components);
+            btnUpdate = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)initialSetupBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)appDbContextBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)appDbContextBindingSource1).BeginInit();
             SuspendLayout();
             // 
             // btnDisplay
@@ -67,6 +75,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnUpdate);
             groupBox1.Controls.Add(txtModels);
             groupBox1.Controls.Add(btnSave);
             groupBox1.Controls.Add(comboCondition);
@@ -85,18 +94,27 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Create Item";
             // 
+            // txtModels
+            // 
+            txtModels.Location = new Point(150, 99);
+            txtModels.Name = "txtModels";
+            txtModels.Size = new Size(121, 23);
+            txtModels.TabIndex = 13;
+            // 
             // btnSave
             // 
-            btnSave.Location = new Point(97, 336);
+            btnSave.Location = new Point(150, 339);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(121, 30);
             btnSave.TabIndex = 12;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // comboCondition
             // 
             comboCondition.FormattingEnabled = true;
+            comboCondition.Items.AddRange(new object[] { "New", "Good", "Fair", "Poor", "UnderRepair", "Broken" });
             comboCondition.Location = new Point(150, 288);
             comboCondition.Name = "comboCondition";
             comboCondition.Size = new Size(121, 23);
@@ -105,6 +123,7 @@
             // comboLoanStatus
             // 
             comboLoanStatus.FormattingEnabled = true;
+            comboLoanStatus.Items.AddRange(new object[] { "Available", "Loaned", "Maintenance" });
             comboLoanStatus.Location = new Point(150, 225);
             comboLoanStatus.Name = "comboLoanStatus";
             comboLoanStatus.Size = new Size(121, 23);
@@ -113,6 +132,7 @@
             // comboCategory
             // 
             comboCategory.FormattingEnabled = true;
+            comboCategory.Items.AddRange(new object[] { "Computer", "Printer", "Router", "Switch", "Other" });
             comboCategory.Location = new Point(150, 162);
             comboCategory.Name = "comboCategory";
             comboCategory.Size = new Size(121, 23);
@@ -170,6 +190,14 @@
             label1.TabIndex = 0;
             label1.Text = "Serial Number:";
             // 
+            // initialSetupBindingSource
+            // 
+            initialSetupBindingSource.DataSource = typeof(Infrastructure.Migrations.initialSetup);
+            // 
+            // appDbContextBindingSource
+            // 
+            appDbContextBindingSource.DataSource = typeof(Infrastructure.Data.AppDbContext);
+            // 
             // btnDelete
             // 
             btnDelete.Location = new Point(563, 300);
@@ -178,13 +206,21 @@
             btnDelete.TabIndex = 13;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
-            // txtModels
+            // appDbContextBindingSource1
             // 
-            txtModels.Location = new Point(150, 99);
-            txtModels.Name = "txtModels";
-            txtModels.Size = new Size(121, 23);
-            txtModels.TabIndex = 13;
+            appDbContextBindingSource1.DataSource = typeof(Infrastructure.Data.AppDbContext);
+            // 
+            // btnUpdate
+            // 
+            btnUpdate.Location = new Point(31, 343);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(75, 23);
+            btnUpdate.TabIndex = 14;
+            btnUpdate.Text = "Update";
+            btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // Form1
             // 
@@ -197,9 +233,13 @@
             Controls.Add(btnDisplay);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)initialSetupBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)appDbContextBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)appDbContextBindingSource1).EndInit();
             ResumeLayout(false);
         }
 
@@ -224,5 +264,9 @@
         private ComboBox comboCategory;
         private Button btnDelete;
         private TextBox txtModels;
+        private BindingSource appDbContextBindingSource;
+        private BindingSource initialSetupBindingSource;
+        private BindingSource appDbContextBindingSource1;
+        private Button btnUpdate;
     }
 }

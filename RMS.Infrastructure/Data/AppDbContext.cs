@@ -25,6 +25,6 @@ namespace RMS.Infrastructure.Data
             }
         }
 
-        DbSet<Equipment> Equipments { get; set; }
+        public DbSet<Equipment> Equipments { get; set; }
     }
 }
